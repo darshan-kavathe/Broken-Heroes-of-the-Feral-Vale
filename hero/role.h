@@ -8,10 +8,11 @@
 namespace hero{
     class Role{
     public:
+        enum Type { FIGHTER, HEALER, TANK };
         Role (Type type);
         Role::Type get_type () const;
         operator std::string () const;
-        enum Type { FIGHTER, HEALER, TANK };
+
     };
 }
 

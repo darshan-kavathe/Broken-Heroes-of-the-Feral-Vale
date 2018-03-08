@@ -2,6 +2,9 @@
 // Created by darsh on 3/1/2018.
 //
 #include "squad.h"
+#include "../hero/team.h"
+#include "../hero/hero.h"
+
 using game::Squad;
 using hero::Team;
 using hero::Hero;

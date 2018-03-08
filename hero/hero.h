@@ -5,6 +5,9 @@
 #ifndef PROJECT_1_HERO_H
 #define PROJECT_1_HERO_H
 
+#include <ostream>
+#include "role.h"
+
 namespace game{
     class Squad;
 }

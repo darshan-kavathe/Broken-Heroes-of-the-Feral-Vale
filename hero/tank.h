@@ -6,9 +6,11 @@
 #define PROJECT_1_TANK_H
 
 #include "../game/squad.h"
+#include "hero.h"
+#include "team.h"
 
 namespace hero{
-    class Tank{
+    class Tank: public Hero{
     public:
         /*
          * Create the tank.

@@ -74,6 +74,7 @@ void test_string_Queue() {
 /**
  * Run the Hero* test
  */
+
 void test_hero_Queue() {
     cout << "test Queue<Hero>..." << endl;
     Queue<Hero*> heroQueue;

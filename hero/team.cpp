@@ -5,7 +5,7 @@
 #include "team.h"
 #include "string"
 using hero::Team;
-
+using std::string;
 Team::Team(Team::Name team) {
 
 };

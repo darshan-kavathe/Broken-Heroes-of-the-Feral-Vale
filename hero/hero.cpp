@@ -6,6 +6,7 @@
 #include "../game/squad.h"
 
 using hero::Hero;
+using hero::Team;
 
 hero::Hero::Hero(const Hero& other){
 

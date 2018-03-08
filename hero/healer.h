@@ -6,9 +6,11 @@
 #define PROJECT_1_HEALER_H
 
 #include "../game/squad.h"
+#include "hero.h"
+#include "team.h"
 
 namespace hero{
-    class Healer{
+    class Healer: public Hero{
     public:
         /*
          * Create the healer
@@ -31,15 +33,15 @@ namespace hero{
         unsigned int attack (Hero *enemy);
 
         //maximum hitpoints
-        const unsigned int hero::Healer::HIT_POINTS = 30;
+        const unsigned int HIT_POINTS = 30;
         //minimum attack damage
-        const unsigned int hero::Healer::MAX_ATTACK_DAMAGE = 10;
+        const unsigned int MAX_ATTACK_DAMAGE = 10;
         //maximum amount to heal
-        const unsigned int hero::Healer::MAX_HEAL_AMOUNT = 5;
+        const unsigned int MAX_HEAL_AMOUNT = 5;
         //maximum attack damage
-        const unsigned int hero::Healer::MIN_ATTACK_DAMAGE = 5;
+        const unsigned int MIN_ATTACK_DAMAGE = 5;
         //minimum amount to heal
-        const unsigned int hero::Healer::MIN_HEAL_AMOUNT = 1;
+        const unsigned int MIN_HEAL_AMOUNT = 1;
     };
 }
 #endif //PROJECT_1_HEALER_H

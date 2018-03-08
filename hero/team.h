@@ -12,11 +12,11 @@ namespace hero{
          * Create the team.
          * @Params team	team
          */
-        Team(Team::Name team);
-        Team::Name get_name()const;
+        enum Name{Dragon, Lion, Shark};
+        Team(Name team);
+        Name get_name()const;
         operator std::string() const;
 
-        enum Name;
     };
 }
 #endif //PROJECT_1_TEAM_H
