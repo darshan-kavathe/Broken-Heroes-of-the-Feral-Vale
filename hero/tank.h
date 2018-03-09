@@ -34,13 +34,13 @@ namespace hero{
         void take_damage (unsigned int amount);
 
         //maximum hit points
-        const unsigned int hero::Tank::HIT_POINTS = 50;
+        static const unsigned int HIT_POINTS = 50;
         //maximum attack damage
-        const unsigned int hero::Tank::MAX_ATTACK_DAMAGE = 10;
+        static const unsigned int MAX_ATTACK_DAMAGE = 10;
         //minimum attack damage
-        const unsigned int hero::Tank::MIN_ATTACK_DAMAGE = 5;
+        static const unsigned int MIN_ATTACK_DAMAGE = 5;
         //amount damage taken is reduced by
-        const double Tank::SHIELD_DAMAGE_REDUCTION = 0.10;
+        static const double SHIELD_DAMAGE_REDUCTION;
     };
 }
 

@@ -3,16 +3,14 @@
 //
 
 #include "role.h"
-
 using hero::Role;
-
-Role::Role (Type type){
-
+using std::string;
+Role::Role (Type type):type_(type){
 };
 
-Role::Type get_type() const{
-    return this.Type;
+enum Role::Type Role::get_type() const{
+    return type_ ;
 };
-operator std::string() const{
-
+Role::operator std::string() const{
+    return "write string method in role.cpp";
 };

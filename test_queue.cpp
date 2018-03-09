@@ -3,17 +3,17 @@
 
 #include "game/squad.h"
 #include "util/queue.h"
+
 #include "hero/hero.h"
 #include "hero/heroes.h"
 
 class Queue;
-
+using game::Squad;
 using hero::Hero;
 using hero::Heroes;
 using hero::Role;
 using hero::Team;
 
-using game::Squad;
 
 using util::Queue;
 
@@ -78,10 +78,10 @@ void test_string_Queue() {
 void test_hero_Queue() {
     cout << "test Queue<Hero>..." << endl;
     Queue<Hero*> heroQueue;
-    Squad squad;
-    heroQueue.add(Hero::createHero(Role::FIGHTER, Team::Name::DRAGON, &squad));
-    heroQueue.add(Hero::createHero(Role::HEALER, Team::Name::DRAGON, &squad));
-    heroQueue.add(Hero::createHero(Role::TANK, Team::Name::DRAGON, &squad));
+    game::Squad squad;
+    heroQueue.add(Hero::create_hero(Role::FIGHTER, Team::Name::DRAGON, &squad));
+    heroQueue.add(Hero::create_hero(Role::HEALER, Team::Name::DRAGON, &squad));
+    heroQueue.add(Hero::create_hero(Role::TANK, Team::Name::DRAGON, &squad));
     assert(heroQueue.front()->get_name() == "Trogdor");
     assert(heroQueue.front()->get_team_name() == Team::Name::DRAGON);
     assert(heroQueue.size() == 3);
@@ -89,7 +89,7 @@ void test_hero_Queue() {
     assert(hero->get_name() == "Trogdor");
     delete hero;
     assert(heroQueue.size() == 2);
-    heroQueue.add(Hero::createHero(Role::FIGHTER, Team::Name::DRAGON, &squad));
+    heroQueue.add(Hero::create_hero(Role::FIGHTER, Team::Name::DRAGON, &squad));
     deque<Hero*> members = heroQueue.get_elements();
     assert(members[0]->get_name() == "Spyro");
     delete heroQueue.remove();

@@ -23,8 +23,18 @@ Healer::Healer(Team::Name team, game::Squad *squad):
 };
 
 unsigned int Healer::attack(Hero *enemy){
+    unsigned int heal = roll_dice(MIN_HEAL_AMOUNT,MAX_HEAL_AMOUNT);
+
+    for (deque<hero::Hero*>::const_iterator iter = (get_squad()->get_heroes()).begin();
+    iter!= get_squad()->get_heroes().end();iter++){
+        if ((*iter)->is_alive()){
+            (*iter)->heal(heal);
+        }
+    }
+
+    //get_squad()->get_heroes()->
     unsigned int damage = roll_dice(MIN_ATTACK_DAMAGE,MAX_ATTACK_DAMAGE);
-    cout<< get_name()<<" slashes "<< enemy->get_name()<<" for "<<damage<<" points "<<endl;
+    std::cout<< get_name()<<" smites "<< enemy->get_name()<<" for "<<damage<<" points "<<std::endl;
     enemy->take_damage(damage);
     return damage;
 };

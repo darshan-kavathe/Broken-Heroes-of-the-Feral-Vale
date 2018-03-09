@@ -6,6 +6,10 @@
 #define PROJECT_1_SQUAD_H
 
 #include <ostream>
+#include "../hero/team.h"
+#include "../hero/hero.h"
+#include "../util/queue.h"
+#include "../util/random.h"
 
 namespace game {
     class Squad {
@@ -40,19 +44,19 @@ namespace game {
         * Get all the heroes.
         * Returns the heroes
         */
-        deque<Hero *> get_heroes();
+        deque<hero::Hero *> get_heroes();
 
         /*
          * Removes and returns the front hero.
          * Returns the hero
          */
-        Hero *get_next_hero();
+        hero::Hero *get_next_hero();
 
         /*
          * Get the team.
          * Returns the team
          */
-        Team get_team() const;
+        hero::Team get_team() const;
 
         /*
          *Roll the dice to generate a number between min and max, inclusive.
@@ -81,11 +85,14 @@ namespace game {
          * Returns output stream
          *
          * */
-        std::ostream &operator<<(std::ostream& os, const Squad& squad);
+        friend std::ostream& operator<<(std::ostream& os, const Squad& squad);
 
     private:
-        //hero::Team::Name name;
-        //unsigned long long seed;
+        hero::Team team_;
+        util::Random random_gen;
+        //unsigned long long seed_;
+        util::Queue<hero::Hero*> hero_q;
     };
+    std::ostream& operator<<(std::ostream& os, const game::Squad& squad);
 }
 #endif //PROJECT_1_SQUAD_H

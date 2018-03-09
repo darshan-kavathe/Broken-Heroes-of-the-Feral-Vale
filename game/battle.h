@@ -12,11 +12,11 @@ public:
            unsigned long long 	lion_seed,
            unsigned long long 	shark_seed);
     //Copy construction is forbidden
-    Battle(const game::Battle & other);
+    Battle(const game::Battle & other) = delete;
     //Destruction.
     ~Battle();
     //Assignment is forbidden
-    Battle& operator =(const Battle & other);
+    Battle& operator =(const Battle & other)= delete;
     //Play the game
     void play();
 
