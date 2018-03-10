@@ -7,7 +7,7 @@
 int main(int argc, char*argv[]){
     game::Battle *b1;
     if(argc < 5) {
-        b1 = new game::Battle(0, 0, 0);
+        b1 = new game::Battle(1, 2, 3);
     }
     else{
         int a1 = atoi(argv[1]);

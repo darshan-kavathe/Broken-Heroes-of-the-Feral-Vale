@@ -59,6 +59,8 @@ void Battle::play(){
     hero::Hero* attacker;
     hero::Hero* victim;
     Squad* victor = b_teams.front();
+    Squad* temp = b_teams.front();
+    Squad* temp1 = b_teams.front();
     while (!game_over) {
         //list<game::Squad*>::iterator bteam_itr = b_teams.begin();
         std::cout << "Battle #" << battle_num << std::endl;
@@ -103,17 +105,50 @@ void Battle::play(){
                 std::string s4 = (*bteam_itr)->get_team();
                 std:: cout<<"Team "<<s4<<" is defeated!"<<std::endl;
                 b_teams.erase(bteam_itr);
-            }   
+            }
         }
 
         if (b_teams.size()==1){
             victor = b_teams.front();
             game_over = true;
         }
+
+        if (battle_num%6 ==2){
+            temp = b_teams.front();
+            b_teams.pop_front();
+            b_teams.push_back(temp);
+        }
+        if (battle_num%6 ==3){
+            temp = b_teams.front();
+            b_teams.pop_front();
+            b_teams.push_back(temp);
+        }
+        if (battle_num%6 ==4){
+            temp = b_teams.back();
+            b_teams.pop_back();
+            temp1 = b_teams.back();
+            b_teams.pop_back();
+            b_teams.push_back(temp);
+            b_teams.push_back(temp1);
+        }
+        if (battle_num%6 ==5){
+            temp = b_teams.front();
+            b_teams.pop_front();
+            b_teams.push_back(temp);
+        }
+        if (battle_num%6 ==0){
+            temp = b_teams.back();
+            b_teams.pop_back();
+            temp1 = b_teams.back();
+            b_teams.pop_back();
+            b_teams.push_back(temp);
+            b_teams.push_back(temp1);
+        }
         std::cout<<std::endl;
         if (battle_num>10) {
             break;
         }
+
     }
 
     std::cout<<"STATISTICS"<<std::endl;
