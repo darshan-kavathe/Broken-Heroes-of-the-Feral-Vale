@@ -44,6 +44,8 @@ void Battle::play(){
     b_teams.push_back(lion_ptr1);
     b_teams.push_back(shark_ptr1);
     std::map<hero::Hero*,unsigned int, CustomCompare> damage_scores;
+    list <hero::Hero*> curr_players;
+    list <hero::Hero*>::iterator curr_pitr = curr_players.begin();
     list<game::Squad*>::iterator bteam_itr = b_teams.begin();
     for (bteam_itr = b_teams.begin();bteam_itr!= b_teams.end(); bteam_itr++){
         std::deque<hero::Hero*> deq = (*bteam_itr)->get_heroes();
@@ -54,43 +56,75 @@ void Battle::play(){
         }
     }
     int battle_num =1;
-    while (!game_over){
+    hero::Hero* attacker;
+    hero::Hero* victim;
+    Squad* victor = b_teams.front();
+    while (!game_over) {
         //list<game::Squad*>::iterator bteam_itr = b_teams.begin();
-        std::cout<<"Battle #"<< battle_num<<std::endl;
-        std::cout<<"========="<< std::endl;
-        battle_num ++;
+        std::cout << "Battle #" << battle_num << std::endl;
+        std::cout << "=========" << std::endl;
+        battle_num++;
 
-        for (bteam_itr = b_teams.begin();bteam_itr!= b_teams.end(); bteam_itr++){
-                std::cout << **bteam_itr << std::endl;
-                //damage_scores[*hero_iter]= 0;
+        //bool curr_battle_over = false;
+
+        for (bteam_itr = b_teams.begin(); bteam_itr != b_teams.end(); bteam_itr++) {
+            std::cout << **bteam_itr << std::endl;
+            hero::Hero* hero_a = (*bteam_itr)->get_next_hero();
+            curr_players.push_back(hero_a);
+        }
+
+        for (curr_pitr = curr_players.begin();curr_pitr != curr_players.end();curr_pitr++) {
+            attacker = *curr_pitr;
+            if (*(curr_pitr) == curr_players.back()){
+                victim = curr_players.front();
             }
+            else{
+                curr_pitr++;
+                victim = *curr_pitr;
+                curr_pitr--;
+            }
+            if (attacker->is_alive()) {
+                damage_scores[victim] += attacker->attack(victim);
+            }
+        }
 
-        /*bteam_itr = b_teams.begin();
-        game::Squad* attacker = *bteam_itr;
-        cout<<*/
-        bteam_itr = b_teams.begin();
-        hero::Hero* hero_1 = (*bteam_itr)->get_next_hero();
-        bteam_itr++;
-        hero::Hero* hero_2 = (*bteam_itr)->get_next_hero();
-        bteam_itr++;
-        hero::Hero* hero_3 = (*bteam_itr)->get_next_hero();
-        damage_scores[hero_2] += (hero_1->attack(hero_2));
-        damage_scores[hero_3] += (hero_2->attack(hero_3));
-        damage_scores[hero_1] += (hero_3->attack(hero_1));
+        // find dead
+        curr_pitr = curr_players.begin();
+        for (bteam_itr = b_teams.begin(); bteam_itr != b_teams.end(); bteam_itr++){
+            if ((*curr_pitr)->is_alive()) {
+                (*bteam_itr)->add_hero(*curr_pitr);
+            }
+            else{
+                dead_pool.push_back(*curr_pitr);
+            }
+            curr_pitr++;
+            if ((*bteam_itr)->size()==0){
+                std::string s4 = (*bteam_itr)->get_team();
+                std:: cout<<"Team "<<s4<<" is defeated!"<<std::endl;
+                b_teams.erase(bteam_itr);
+            }
+        }
 
-
-        (*bteam_itr)->add_hero(hero_3);
-        bteam_itr --;
-        (*bteam_itr)->add_hero(hero_2);
-        bteam_itr --;
-        (*bteam_itr)->add_hero(hero_1);
+        if (b_teams.size()==1){
+            victor = b_teams.front();
+            game_over = true;
+        }
         std::cout<<std::endl;
-        break;
-
+        if (battle_num>1) {
+            break;
+        }
     }
 
     std::cout<<"STATISTICS"<<std::endl;
     std::cout<<"=========="<< std::endl;
+    std::string v = victor->get_team();
+    std::cout<<"Victor:"<< v <<std::endl;
+    std::cout<<"Battles:"<< (battle_num-1) <<std::endl;
+    std::cout<<"Fallen:" <<std::endl;
+    for (curr_pitr = dead_pool.begin();curr_pitr != dead_pool.end();curr_pitr++){
+        std::cout<< **curr_pitr;
+    }
+    std::cout<<"Damage:" <<std::endl;
     std::map<hero::Hero*,unsigned int>::iterator score_itr = damage_scores.begin();
     for(score_itr=damage_scores.begin(); score_itr!=damage_scores.end(); score_itr++ ){
         std::cout << (score_itr->first)->get_name() <<": "<<(score_itr->second)<< std::endl;
