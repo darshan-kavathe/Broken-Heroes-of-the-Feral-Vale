@@ -98,11 +98,12 @@ void Battle::play(){
                 dead_pool.push_back(*curr_pitr);
             }
             curr_pitr++;
-            if ((*bteam_itr)->size()==0){
+            deque<hero::Hero*> h1 = (*bteam_itr)->get_heroes();
+            if (h1.size()==0){
                 std::string s4 = (*bteam_itr)->get_team();
                 std:: cout<<"Team "<<s4<<" is defeated!"<<std::endl;
                 b_teams.erase(bteam_itr);
-            }
+            }   
         }
 
         if (b_teams.size()==1){
@@ -110,7 +111,7 @@ void Battle::play(){
             game_over = true;
         }
         std::cout<<std::endl;
-        if (battle_num>1) {
+        if (battle_num>10) {
             break;
         }
     }
@@ -119,12 +120,15 @@ void Battle::play(){
     std::cout<<"=========="<< std::endl;
     std::string v = victor->get_team();
     std::cout<<"Victor:"<< v <<std::endl;
+    std::cout<<"=========="<< std::endl;
     std::cout<<"Battles:"<< (battle_num-1) <<std::endl;
     std::cout<<"Fallen:" <<std::endl;
+    std::cout<<"=========="<< std::endl;
     for (curr_pitr = dead_pool.begin();curr_pitr != dead_pool.end();curr_pitr++){
         std::cout<< **curr_pitr;
     }
     std::cout<<"Damage:" <<std::endl;
+    std::cout<<"=========="<< std::endl;
     std::map<hero::Hero*,unsigned int>::iterator score_itr = damage_scores.begin();
     for(score_itr=damage_scores.begin(); score_itr!=damage_scores.end(); score_itr++ ){
         std::cout << (score_itr->first)->get_name() <<": "<<(score_itr->second)<< std::endl;

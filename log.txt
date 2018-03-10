@@ -1,0 +1,35 @@
+commit 87090abff7ac3b326bf6c37df56352a8c46ecea1
+Author: dck1135 <--global>
+Date:   Fri Mar 9 23:30:39 2018 -0500
+
+    infinite loop problem
+
+commit b16e15436543d0867df6d3324216770f2ebc8bd6
+Author: dck1135 <--global>
+Date:   Fri Mar 9 21:39:06 2018 -0500
+
+    corrected single battle
+
+commit f33840ad9f248e862e96e1149f32615ed5594b04
+Author: dck1135 <--global>
+Date:   Fri Mar 9 21:15:58 2018 -0500
+
+    implemented for one battle
+
+commit 8ac2db7737e2281bb7a8ebee73117677777c3bae
+Author: dck1135 <--global>
+Date:   Fri Mar 9 14:47:46 2018 -0500
+
+    Hero and its subclasses and squad implemented
+
+commit d4a64adfd77a7181085b3403cbdb641dcc4deec2
+Author: dck1135 <--global>
+Date:   Thu Mar 8 17:54:16 2018 -0500
+
+    Queue implemented and tested
+
+commit 188f9a88d0071ee329d884ab0655f6b85fc84672
+Author: dck1135 <--global>
+Date:   Thu Mar 8 14:29:29 2018 -0500
+
+    Boiler Plate Code
