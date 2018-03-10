@@ -60,6 +60,14 @@ void Battle::play(){
         std::cout<<"========="<< std::endl;
         battle_num ++;
 
+        for (bteam_itr = b_teams.begin();bteam_itr!= b_teams.end(); bteam_itr++){
+                std::cout << **bteam_itr << std::endl;
+                //damage_scores[*hero_iter]= 0;
+            }
+
+        /*bteam_itr = b_teams.begin();
+        game::Squad* attacker = *bteam_itr;
+        cout<<*/
         bteam_itr = b_teams.begin();
         hero::Hero* hero_1 = (*bteam_itr)->get_next_hero();
         bteam_itr++;
@@ -70,14 +78,19 @@ void Battle::play(){
         damage_scores[hero_3] += (hero_2->attack(hero_3));
         damage_scores[hero_1] += (hero_3->attack(hero_1));
 
+
         (*bteam_itr)->add_hero(hero_3);
         bteam_itr --;
         (*bteam_itr)->add_hero(hero_2);
         bteam_itr --;
         (*bteam_itr)->add_hero(hero_1);
-
+        std::cout<<std::endl;
         break;
+
     }
+
+    std::cout<<"STATISTICS"<<std::endl;
+    std::cout<<"=========="<< std::endl;
     std::map<hero::Hero*,unsigned int>::iterator score_itr = damage_scores.begin();
     for(score_itr=damage_scores.begin(); score_itr!=damage_scores.end(); score_itr++ ){
         std::cout << (score_itr->first)->get_name() <<": "<<(score_itr->second)<< std::endl;

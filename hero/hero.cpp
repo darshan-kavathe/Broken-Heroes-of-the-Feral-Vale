@@ -84,10 +84,10 @@ unsigned int Hero::roll_dice(unsigned int min, unsigned int max){
 
 void Hero::take_damage(	unsigned int amount){
     hit_points = hit_points- amount;
-    if (hit_points < 0){
+    if (hit_points <= 0){
         hit_points =0;
+        std::cout<< name << " has fallen!"<<std::endl;
     }
-    std::cout<< name << " has fallen!"<<std::endl;
 }
 
 std::ostream& hero::operator<<(std::ostream& os, const hero::Hero& other){
