@@ -4,7 +4,13 @@
 
 #ifndef PROJECT_1_BATTLE_H
 #define PROJECT_1_BATTLE_H
+
+#include "squad.h"
+#include <map>
+#include <list>
+
 namespace game{
+
 class Battle{
 public:
     //Initialize the battle with the seeds.
@@ -20,9 +26,13 @@ public:
     //Play the game
     void play();
 
+
 private:
-    unsigned long long 	dragon_seed;
-    unsigned long long 	lion_seed;
-    unsigned long long 	shark_seed;
-};}
+    unsigned long long 	dragon_seed_;
+    unsigned long long 	lion_seed_;
+    unsigned long long 	shark_seed_;
+    std::list<game::Squad*> battle_teams;
+};
+
+}
 #endif //PROJECT_1_BATTLE_H

@@ -13,9 +13,9 @@ namespace hero{
          * @Params team	team
          */
         enum Name{DRAGON, LION, SHARK};
-        explicit Team(Name team);
+        Team(Name team);
         Name get_name()const;
-        explicit operator std::string() const;
+        operator std::string() const;
 
     private:
         Name team_;

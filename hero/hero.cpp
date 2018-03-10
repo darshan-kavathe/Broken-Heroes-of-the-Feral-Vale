@@ -26,15 +26,17 @@ unsigned int hero::Hero::attack	(Hero * enemy){
 }
 
 Hero* Hero::create_hero(Role::Type type, Team::Name team, game::Squad* squad){
-        switch (type) {
-            // check type
-                //
+    switch (type) {
+        // check type//
         case Role::Type::FIGHTER:
             return new Fighter(team,squad);
+            break;
         case Role::Type::HEALER:
             return new Healer(team,squad);
+            break;
         case Role::Type::TANK:
-            return new Tank(team,squad);
+             return new Tank(team,squad);
+            break;
     }
 }
 
@@ -55,16 +57,19 @@ void Hero::heal	(unsigned int amount){
     switch (role.get_type()) {
         case Role::Type::FIGHTER:
             max_allowed = hero::Fighter::HIT_POINTS;
+            break;
         case Role::Type::HEALER:
             max_allowed = hero::Healer::HIT_POINTS;
+            break;
         case Role::Type::TANK:
             max_allowed = hero::Tank::HIT_POINTS;
+            break;
     }
     hit_points= hit_points+ amount;
     if (hit_points > max_allowed){
         hit_points = max_allowed;
     };
-    std::cout<< name << " heals for "<<amount << " points";
+    std::cout<< name << " heals for "<<amount << " points" <<std::endl;
 }
 
 bool Hero::is_alive	(	)	const{
@@ -82,7 +87,7 @@ void Hero::take_damage(	unsigned int amount){
     if (hit_points < 0){
         hit_points =0;
     }
-    std::cout<< name << " has fallen!";
+    std::cout<< name << " has fallen!"<<std::endl;
 }
 
 std::ostream& hero::operator<<(std::ostream& os, const hero::Hero& other){
@@ -91,12 +96,17 @@ std::ostream& hero::operator<<(std::ostream& os, const hero::Hero& other){
     switch (other.role.get_type()) {
         case Role::Type::FIGHTER:
             max_allowed = hero::Fighter::HIT_POINTS;
+            break;
         case Role::Type::HEALER:
             max_allowed = hero::Healer::HIT_POINTS;
+            break;
         case Role::Type::TANK:
             max_allowed = hero::Tank::HIT_POINTS;
+            break;
     }
-    std::cout<<"{"<<other.name<<"}"<< &(other.role) <<", "<< other.hit_points<<"/"<< max_allowed;
+    std::string s1 = other.role ;
+    os<<"{"<<other.name<<"} "<< s1 <<", "<< other.hit_points<<"/"<< max_allowed;
+    return os;
 }
 
 

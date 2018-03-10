@@ -12,5 +12,12 @@ enum Role::Type Role::get_type() const{
     return type_ ;
 };
 Role::operator std::string() const{
-    return "write string method in role.cpp";
+    switch(type_){
+        case Type::FIGHTER:
+            return "FIGHTER";
+        case Type::HEALER:
+            return "HEALER";
+        case Type::TANK:
+            return "TANK";
+    }
 };

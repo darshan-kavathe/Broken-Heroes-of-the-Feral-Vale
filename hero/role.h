@@ -11,9 +11,9 @@ namespace hero{
     class Role{
     public:
         enum Type { FIGHTER, HEALER, TANK };
-        explicit Role (Type type);
+        Role (Type type);
         Role::Type get_type () const;
-        explicit operator std::string () const;
+        operator std::string () const;
 
     private:
         Role::Type type_;

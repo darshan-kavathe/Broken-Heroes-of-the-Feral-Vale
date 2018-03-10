@@ -14,7 +14,15 @@ Team::Name Team::get_name()const{
     return team_;
 };
 
-Team::operator std::string() const{
-    return "implement string method in team.cpp";
+Team::operator std::string() const {
+    switch(team_){
+        case Name::DRAGON:
+            return "DRAGON";
+        case Name::LION:
+            return "LION";
+        case Name::SHARK:
+            return "SHARK";
+    }
+   // return "implement string method in team.cpp";
 };
 

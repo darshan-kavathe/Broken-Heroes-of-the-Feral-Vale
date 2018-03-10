@@ -69,13 +69,16 @@ unsigned long Squad::size()	const{
     return hero_q.size();
 }
 std::ostream& game::operator<<(std::ostream& os, const Squad& squad){
-    os<< squad.get_team().get_name()<<":\n";
-    for (deque<hero::Hero*>::const_iterator iter = squad.hero_q.get_elements().begin();
-    iter!= squad.hero_q.get_elements().end();iter++){
+    std::string a1 = squad.get_team();
+    os<< a1 <<":\n";
+    deque<hero::Hero*> dq = squad.hero_q.get_elements();
+    for (deque<hero::Hero*>::iterator iter = dq.begin();
+    iter!= dq.end();iter++){
         if ((*iter)->is_alive()){
-            os<<*iter;
+            os<<*(*iter)<<std::endl;
         }
     }
+    return os;
     //if (squad.hero_q.get_elements()){}
 
 }

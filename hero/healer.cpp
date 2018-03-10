@@ -24,9 +24,9 @@ Healer::Healer(Team::Name team, game::Squad *squad):
 
 unsigned int Healer::attack(Hero *enemy){
     unsigned int heal = roll_dice(MIN_HEAL_AMOUNT,MAX_HEAL_AMOUNT);
-
-    for (deque<hero::Hero*>::const_iterator iter = (get_squad()->get_heroes()).begin();
-    iter!= get_squad()->get_heroes().end();iter++){
+    deque<hero::Hero*> dq = get_squad()->get_heroes();
+    for (deque<hero::Hero*>::const_iterator iter = dq.begin();
+    iter!= dq.end();iter++){
         if ((*iter)->is_alive()){
             (*iter)->heal(heal);
         }

@@ -42,7 +42,7 @@ template<typename T>
 T Queue<T>::remove(){
     //Remove and return the front element.
     // Remove the element
-    T temp = q.front();
+    T& temp = q.front();
     q.pop_front();
     return temp;
 }

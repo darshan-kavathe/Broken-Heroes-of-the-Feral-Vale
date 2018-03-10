@@ -24,7 +24,7 @@ namespace hero{
          * role	role
          * squad	squad
          */
-        explicit Hero(const std::string& name, unsigned int hit_points, const Role& role, game::Squad *squad);
+         Hero(const std::string& name, unsigned int hit_points, const Role& role, game::Squad *squad);
 
         unsigned int roll_dice(unsigned int min, unsigned int max);
 
@@ -55,9 +55,9 @@ namespace hero{
         friend std::ostream& operator<<	(std::ostream& os, const Hero& other);
 
     private:
-        const std::string& name;
+        const std::string name;
         unsigned int hit_points;
-        const Role& role;
+        Role role;
         game::Squad *squad;
     };
     std::ostream& operator<<(std::ostream& os, const hero::Hero& other);
