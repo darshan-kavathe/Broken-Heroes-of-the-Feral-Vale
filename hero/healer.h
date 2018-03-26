@@ -27,10 +27,10 @@ namespace hero{
          * Here {name} is the hero's name, {enemy} is the enemies name, and # is the amount of damage they dealt.
          *
          *@params enemy
-         * @Return
+         * @returns amount of damage dealt
          * Implements hero::Hero.
          */
-        unsigned int attack (Hero *enemy);
+        virtual unsigned int attack (Hero *enemy);
 
         //maximum hitpoints
         static const unsigned int HIT_POINTS = 30;

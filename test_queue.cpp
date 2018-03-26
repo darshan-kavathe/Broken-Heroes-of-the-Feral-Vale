@@ -104,10 +104,10 @@ void test_hero_Queue() {
  *
  * @return 0
  */
-/*
+
 int main() {
     test_int_Queue();
     test_string_Queue();
     test_hero_Queue();
     return 0;
-}*/
+}

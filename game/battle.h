@@ -1,5 +1,5 @@
 //
-// Created by darsh on 3/1/2018.
+// Created by DArshan Kavathe on 3/1/2018.
 //
 
 #ifndef PROJECT_1_BATTLE_H
@@ -28,10 +28,10 @@ public:
 
 
 private:
+    //seeds for each squad
     unsigned long long 	dragon_seed_;
     unsigned long long 	lion_seed_;
     unsigned long long 	shark_seed_;
-    std::list<game::Squad*> battle_teams;
 };
 
 }

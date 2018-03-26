@@ -1,5 +1,5 @@
 //
-// Created by darsh on 3/1/2018.
+// Created by DArshan Kavathe on 3/1/2018.
 //
 #include "squad.h"
 #include "../hero/team.h"
@@ -8,7 +8,7 @@
 using game::Squad;
 using hero::Team;
 using hero::Hero;
-//using util::Queue;
+
 
 Squad::Squad():random_gen(1),team_(Team::Name::DRAGON){
 }
@@ -79,8 +79,6 @@ std::ostream& game::operator<<(std::ostream& os, const Squad& squad){
         }
     }
     return os;
-    //if (squad.hero_q.get_elements()){}
-
 }
 
 

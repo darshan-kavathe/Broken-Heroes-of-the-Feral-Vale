@@ -1,22 +1,25 @@
 //
-// Created by darsh on 3/9/2018.
+// Created by Darshan Kavathe on 3/9/2018.
 //
 
 #include "game/battle.h"
+#include <sstream>
 
 int main(int argc, char*argv[]){
-    game::Battle *b1;
-    if(argc < 5) {
-        b1 = new game::Battle(1, 2, 3);
+    game::Battle *game_inst;
+    // check number of arguments
+    if (argc<3){
+        std::cout<<"Usage: main dragon_seed_# lion_seed_# shark_seed_#"<<std::endl;
     }
-    else{
-        int a1 = atoi(argv[1]);
-        int a2 = atoi(argv[3]);
-        int a3 = atoi(argv[5]);
-        b1 = new game::Battle(a1, a2, a3);
+    else {
+        //Parse input to unsigned long long
+        unsigned long long a1 = atoll(argv[1]);
+        unsigned long long a2 = atoll(argv[2]);
+        unsigned long long a3 = atoll(argv[3]);
+        // start game instance
+        game_inst = new game::Battle(a1, a2, a3);
+        game_inst->play();
     }
-
-    b1->play();
-
+    delete game_inst;
     return 0;
 }

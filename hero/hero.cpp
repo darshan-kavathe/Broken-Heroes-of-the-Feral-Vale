@@ -21,8 +21,7 @@ Hero::Hero(	const std::string& name, unsigned int hit_points, const Role& role, 
 Hero::~Hero(){
 }
 
-unsigned int hero::Hero::attack	(Hero * enemy){
-
+unsigned int hero::Hero::attack	(Hero*){
 }
 
 Hero* Hero::create_hero(Role::Type type, Team::Name team, game::Squad* squad){
@@ -30,13 +29,12 @@ Hero* Hero::create_hero(Role::Type type, Team::Name team, game::Squad* squad){
         // check type//
         case Role::Type::FIGHTER:
             return new Fighter(team,squad);
-            break;
         case Role::Type::HEALER:
             return new Healer(team,squad);
-            break;
         case Role::Type::TANK:
              return new Tank(team,squad);
-            break;
+        default:
+            return new Fighter(team,squad);
     }
 }
 
@@ -73,7 +71,7 @@ void Hero::heal	(unsigned int amount){
 }
 
 bool Hero::is_alive	(	)	const{
-    return bool(hit_points);
+    return (bool)hit_points;
 }
 
 
@@ -83,10 +81,12 @@ unsigned int Hero::roll_dice(unsigned int min, unsigned int max){
 }
 
 void Hero::take_damage(	unsigned int amount){
-    hit_points = hit_points- amount;
-    if (hit_points <= 0){
+    if (hit_points <= amount){
         hit_points =0;
         std::cout<< name << " has fallen!"<<std::endl;
+    }
+    else {
+        hit_points = hit_points - amount;
     }
 }
 
@@ -105,7 +105,7 @@ std::ostream& hero::operator<<(std::ostream& os, const hero::Hero& other){
             break;
     }
     std::string s1 = other.role ;
-    os<<"{"<<other.name<<"} "<< s1 <<", "<< other.hit_points<<"/"<< max_allowed;
+    os<<other.name<<", "<< s1 <<", "<< other.hit_points<<"/"<< max_allowed;
     return os;
 }
 

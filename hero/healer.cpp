@@ -1,5 +1,5 @@
 //
-// Created by darsh on 3/1/2018.
+// Created by DArshan Kavathe on 3/1/2018.
 //
 
 #include "healer.h"
@@ -20,7 +20,7 @@ Healer::Healer(Team::Name team, game::Squad *squad):
              HIT_POINTS,
              Role(Role::Type::HEALER),
              squad){
-};
+}
 
 unsigned int Healer::attack(Hero *enemy){
     unsigned int heal = roll_dice(MIN_HEAL_AMOUNT,MAX_HEAL_AMOUNT);
@@ -33,9 +33,8 @@ unsigned int Healer::attack(Hero *enemy){
         }
     }
 
-    //get_squad()->get_heroes()->
     unsigned int damage = roll_dice(MIN_ATTACK_DAMAGE,MAX_ATTACK_DAMAGE);
     std::cout<< get_name()<<" smites "<< enemy->get_name()<<" for "<<damage<<" points "<<std::endl;
     enemy->take_damage(damage);
     return damage;
-};
+}

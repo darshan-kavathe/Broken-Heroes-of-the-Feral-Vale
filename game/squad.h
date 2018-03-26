@@ -1,5 +1,5 @@
 //
-// Created by darsh on 3/1/2018.
+// Created by Darshan Kavathe on 3/1/2018.
 //
 
 #ifndef PROJECT_1_SQUAD_H
@@ -61,8 +61,8 @@ namespace game {
         /*
          *Roll the dice to generate a number between min and max, inclusive.
          * Parameters
-         * min	the minimum value
-         * max	the maximum value
+         * @params min	the minimum value
+         * @params max	the maximum value
          * Returns
          * the value
          */
@@ -88,8 +88,8 @@ namespace game {
         friend std::ostream& operator<<(std::ostream& os, const Squad& squad);
 
     private:
-        hero::Team team_;
         util::Random random_gen;
+        hero::Team team_;
         //unsigned long long seed_;
         util::Queue<hero::Hero*> hero_q;
     };

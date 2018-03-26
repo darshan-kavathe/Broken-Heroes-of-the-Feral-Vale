@@ -23,11 +23,11 @@ Fighter::Fighter	(Team::Name team, game::Squad *squad):
         HIT_POINTS,
         Role(Role::Type::FIGHTER),
         squad){
-};
+}
 
 unsigned int Fighter::attack(Hero *enemy){
     unsigned int damage = roll_dice(MIN_ATTACK_DAMAGE,MAX_ATTACK_DAMAGE);
     cout<< get_name()<<" slashes "<< enemy->get_name()<<" for "<<damage<<" points "<<endl;
     enemy->take_damage(damage);
     return damage;
-};
+}

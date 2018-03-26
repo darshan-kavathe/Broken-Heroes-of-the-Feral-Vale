@@ -19,16 +19,28 @@ namespace util {
         //Destructor
         virtual ~Queue();
 
+        //Get the number of elements in the queue.
+        //Returns :size
         unsigned long size() const;
 
+        //Add an element to the back of the queue.
+        //Parameters: element	new element
         void add(T element);
 
+        // Peek at the front element.
+        // Returns front element
         T &front();
 
+        //Remove and return the front element.
+        // Remove the elements
         T remove();
 
+        // Get all the elements.
+        // returns all elements
         deque<T>& get_elements();
 
+        // Get all the elements.
+        // returns all elements
         const deque<T>& get_elements() const;
 
     private:

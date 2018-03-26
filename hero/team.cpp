@@ -8,11 +8,11 @@ using hero::Team;
 using std::string;
 Team::Team(Team::Name team):team_(team) {
 
-};
+}
 
 Team::Name Team::get_name()const{
     return team_;
-};
+}
 
 Team::operator std::string() const {
     switch(team_){
@@ -22,7 +22,7 @@ Team::operator std::string() const {
             return "LION";
         case Name::SHARK:
             return "SHARK";
+        default:
+            return "INVALID";
     }
-   // return "implement string method in team.cpp";
-};
-
+}

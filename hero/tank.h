@@ -25,7 +25,7 @@ namespace hero{
          * @params enemy who this hero is attacking
          * @return amount of damage dealt
          */
-        unsigned int attack (Hero *enemy);
+        virtual unsigned int attack (Hero *enemy);
         /*
          *The tank overrides Hero::take_damage, but still calls it after determining the adjusted
          * amount of damage to take.

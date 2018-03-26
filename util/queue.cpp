@@ -10,7 +10,8 @@ using std::deque;
 using namespace util;
 template<typename T>
 Queue<T>::Queue(){
-    //Create an empty queue.
+    deque<T> q();
+
 }
 
 template<typename T>
@@ -61,8 +62,6 @@ const deque<T>& Queue<T>::get_elements()const{
     return q;
 }
 
-//template<typename T>
-//util::Queue<T>::~Queue() {}
 
 template class Queue<int>;
 template class Queue<std::string>;
